@@ -1,0 +1,310 @@
+:root{
+    --bg-gray : #1f1f1f;
+    --text-brown : #b3b3b3;
+    --hover-gray : #2A2A2A;
+    --section-bg : #121212;
+    --card-p:#666;
+    --card-bg:#1e1e1e;
+    --theme-color:#1DB954;
+    --theme-color-hover : #3ADF74;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+body{
+    background-color: black;
+    color: white;
+    font-family: 'Spotify Mix UI';
+}
+a{
+    text-decoration: none;
+    font-size: 14px;
+}
+li{
+    list-style: none;
+}
+h6{
+    font-size: 16px;
+}
+.transition-3{
+    transition-duration: 0.3s;
+}
+.btn-pill{
+    background-color: var(--bg-gray);
+    padding: 4px 12px;
+}
+.btn-pill:hover{
+    background-color: var(--hover-gray);
+}
+
+/* header */
+header .logo a i{
+    font-size: 32px;
+}
+header .header-middel .home-btn{
+    width: 48px;
+    height: 48px;
+    background-color: var(--bg-gray);
+}
+header .header-middel .home-btn:hover{
+    background-color: var(--hover-gray);
+}
+header .header-middel .search-group{
+    background-color: var(--bg-gray);
+    height: 48px;
+}
+header .header-middel .search-group i{
+    color: var(--text-brown);
+}
+header .header-middel .search-group input{
+    background-color: transparent;
+    width: 400px;
+    border: none;
+    border-color: var(--text-brown) !important;
+}
+header .header-middel .search-group .input-text{
+    left: 300px;
+    transition-duration: 0.3s;
+}
+header .header-middel .search-group .input-text span{
+    color: var(--text-brown);
+    border: 1px solid var(--text-brown) !important;
+}
+header .header-middel:hover .search-group .input-text{
+    opacity: 1 !important;
+}
+header .header-middel .search-group input::placeholder{
+    color: var(--text-brown);
+}
+header .header-middel .search-group input:focus{
+    outline: none;
+}
+header .header-middel .search-group:hover{
+    background-color: var(--hover-gray);
+}
+header .header-right ul li a i{
+    font-size: 17px;
+    color: var(--text-brown);
+}
+header .header-right ul li a:hover i{
+    color: white;
+}
+header .header-right ul .user img{
+    width: 32px;
+    height: 32px;
+}
+
+/* aside */
+aside , main{
+    width: calc(100vw - 77vw);
+    background-color: var(--section-bg);
+    min-height: calc(100vh - 90px);
+    /* overflow-y: hidden; */
+}
+aside .aside-title-left button{
+    border-style: none;
+    background-color: transparent;
+    color: #5f5f5f;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -45px;
+}
+aside:hover .aside-title-left button{
+    left: 0;
+}
+aside:hover .aside-title-left h6{
+    margin-left: 30px;
+}
+aside .aside-title-right ul li .aside-create{
+    background-color: var(--bg-gray);
+    height: 35px;
+}
+aside .aside-title-right ul li .aside-create:hover{
+    background-color: var(--hover-gray);
+}
+aside .aside-title-right ul li i{
+    color: var(--text-brown);
+}
+aside .aside-title-right ul li .aside-full{
+    width: 35px;
+    height: 35px;
+}
+aside .aside-title-right ul li .aside-full:hover{
+    background-color: var(--bg-gray);
+}
+aside .aside-feture .aside-search{
+    width: 32px;
+    height: 32px;
+    color: var(--hover-gray) !important;
+}
+aside .aside-feture .aside-search:hover{
+    background-color: var(--hover-gray);
+}
+aside .aside-feture .aside-recent{
+    color: var(--text-brown);
+}
+aside .aside-feture .aside-recent:hover{
+    color: white;
+    transform: scale(1.05);
+}
+aside .aside-feture .aside-recent:hover i{
+    color: white;
+}
+aside .aside-feture .aside-recent i , aside .aside-feture .aside-search i{
+    color: var(--text-brown);
+}
+aside .songlist{
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+aside .songlist ul li {
+    display: flex;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+aside .songlist ul li:hover{
+    background-color: var(--bg-gray);
+}
+aside .songlist ul li p , .playbar .song-detail p{
+    color: var(--card-p);
+    font-size: 13px;
+}
+
+/* main */
+main{
+    width: calc(100vw - 23vw) !important;
+}
+.card-container{
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+.card:hover{
+    background-color: var(--card-bg);
+}
+.card p{
+    font-size: 14px;
+    color: var(--card-p);
+}
+.card img{
+    /* width: 140px !important; */
+    height: 182px !important;
+    object-fit: cover;
+}
+.card-play{
+    width: 48px;
+    height: 48px;
+    background-color: var(--theme-color);
+    bottom: 0px;
+    right: 4px;
+    font-size: 20px;
+}
+.card:hover .card-play{
+    bottom: 4px;
+    opacity: 1 !important;
+}
+.card .card-play:hover{
+    background-color: var(--theme-color-hover);
+}
+
+/* playbar */
+.playbar{
+    background-color: #000;
+    height: 90px;
+    bottom: 0px;
+    /* bottom: -36px; */
+    /* bottom: -76px; */
+    /* bottom: -110px; */
+}
+.playbar .song-detail , .playbar .volume{
+    max-width: 30vh;
+}
+.playbar .track-info{
+    width: 40vw;
+}
+.playbar .track-info #startTime , .playbar .track-info #endTime{
+    font-size: 12px;
+    color: var(--card-p);
+    width: 35px;
+}
+.playbar .track-info ul li a i {
+    font-size: 18px;
+    color: var(--text-brown);
+}
+.playbar .track-info ul li a:hover i{
+    color: white;
+    transform: scale(1.05);
+}
+.playbar .track-info ul li .play{
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    color: #000;
+}
+.playbar .track-info ul li .play i{
+    margin-left: 1px;
+    margin-top: 1px;
+    color: #000;
+}
+.playbar .track-info ul li .play:hover i{
+    /* transform: scale(1); */
+    color: #000;
+}
+.playbar .track-info ul li .play:hover{
+    transform: scale(1.05);
+}
+.playbar .seekbar{
+    width: 100%;
+    height: 4px;
+    background-color: var(--hover-gray);
+    cursor: pointer;
+}
+.progress {
+    height: 100%;
+    background: var(--theme-color);  /* progress color */
+    width: 0%;
+    border-radius: 3px;
+  }
+.playbar .seekbar .circle{
+    width: 13px;
+    height: 13px;
+    background-color: white;
+    top: -4px;
+    left: 0;
+    transition: left 0.5s;
+}
+.playbar .range input{
+    accent-color: var(--theme-color);
+    cursor: pointer;
+}
+
+
+
+
+/* scrollbar */
+/* Total scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px; 
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background: var(--card-p);
+    border-radius: 10px; 
+}

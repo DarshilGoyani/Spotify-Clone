@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Web Player: Music for everyone</title>
+
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="css/all.min.css" type="text/css">
+
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="css/bootstrap-icons.css" type="text/css">
+
+    <!-- remix icon -->
+    <link rel="stylesheet" href="remix-icon/remixicon.css" type="text/css">
+
+    <!-- bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- spotify fonts -->
+    <link rel="stylesheet" href="fonts/Spotify Fonts/stylesheet.css" type="text/css">
+
+    <!-- main css -->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    <!-- max css -->
+    <link rel="stylesheet" href="css/max.css" type="text/css">
+
+</head>
+
+<body class="position-relative">
+
+    <!-- header -->
+    <header class="py-2 px-3">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-center justify-content-between">
+                <div class="logo">
+                    <a href="javascript:void(0)" class="hamburger me-3 d-xl-none"><i class="fa-regular fa-bars"></i></a>
+                    <a href="javascript:void(0)" class=""><i class="fa-brands fa-spotify"></i></a>
+                </div>
+                <div class="header-middel d-flex align-items-center justify-content-center">
+                    <div class="home-btn d-none d-lg-flex transition-3 rounded-circle d-flex align-items-center justify-content-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true"
+                            fill="white" width="20" height="21">
+                            <path
+                                d="M13.5 1.515a3 3 0 0 0-3 0L3 5.845a2 2 0 0 0-1 1.732V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h4v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7.577a2 2 0 0 0-1-1.732z" />
+                        </svg>
+                    </div>
+                    <div
+                        class="search-group transition-3 rounded-pill position-relative ms-2 p-3 d-flex align-items-center justify-content-center">
+                        <i class="fa-regular fa-magnifying-glass"></i>
+                        <input type="text" placeholder="What do you went to play?" class="mx-3 d-none d-lg-block border-end">
+                        <div class="input-text opacity-0 position-absolute top-50 translate-middle d-none d-lg-block">
+                            <span class="border px-1 rounded-1">Ctrl</span>
+                            <span class="border px-1 rounded-1">K</span>
+                        </div>
+                        <svg data-encore-id="icon" role="img" aria-hidden="true" width="20" fill="#b3b3b3" height="21"
+                            class="d-none d-lg-block" viewBox="0 0 24 24">
+                            <path d="M15 15.5c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2"></path>
+                            <path
+                                d="M1.513 9.37A1 1 0 0 1 2.291 9h19.418a1 1 0 0 1 .979 1.208l-2.339 11a1 1 0 0 1-.978.792H4.63a1 1 0 0 1-.978-.792l-2.339-11a1 1 0 0 1 .201-.837zM3.525 11l1.913 9h13.123l1.913-9zM4 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v4h-2V3H6v3H4z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="d-flex ps-0 mb-0 align-items-center">
+                        <li class="d-none d-xl-block"><a href="javascript:void(0)"><i class="fa-regular fa-bell transition-3"></i></a></li>
+                        <li class="d-none d-xl-block mx-4"><a href="javascript:void(0)"><i
+                                    class="fa-regular fa-users transition-3"></i></a></li>
+                        <li class="user">
+                            <img src="images/dp.jpg" class="rounded-circle" alt="img">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="d-flex">
+        <aside class="rounded-2 ms-2 p-3">
+            <div class="aside-title mb-3 d-flex align-items-center justify-content-between">
+                <div class="aside-title-left position-relative d-flex align-items-center">
+                    <button type="button" aria-label="Collapse Your Library"
+                        class="position-absolute pe-3 transition-3 oaVwShR89gQxLH2tco5G LLlfyKiKbOd8gfCmHcZX HgSl1rNhQllYYZneaYji FQFIqbs9Ic3VDNohmxRp G_xEAccmp3ulqXjuviWK QyXI9781YcLv0Oq8lqLi jvQuhpfe_ZSz6EaqTooj Lau6kc9Au_87a19N7MRq sIcvNtRiZgmDIv8uyeJQ v7brahHJw__K_QX72Un8 LNzflW6HN3b7upl8Pt7w fx6H3lNvA0mmfExS6ngH"><span
+                            class="Gj4v3278oIywygaUyBbt"><svg data-encore-id="icon" role="img" aria-hidden="true"
+                                class="e-91000-icon e-91000-baseline e-91000-icon--auto-mirror" width="18" height="18"
+                                fill="#5f5f5f" viewBox="0 0 16 16"
+                                style="--encore-icon-height: var(--encore-graphic-size-decorative-smaller); --encore-icon-width: var(--encore-graphic-size-decorative-smaller);">
+                                <path
+                                    d="M10.97 5.47a.75.75 0 1 1 1.06 1.06L10.56 8l1.47 1.47a.75.75 0 1 1-1.06 1.06l-2-2a.75.75 0 0 1 0-1.06z">
+                                </path>
+                                <path
+                                    d="M1 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm.5 1.5H5v13H1.5zm13 13h-8v-13h8z">
+                                </path>
+                            </svg></span>
+                    </button>
+                    <h6 class="fw-semibold transition-3 mb-0">Your Library</h6>
+                </div>
+                <div class="aside-title-right d-flex align-items-center justify-content-center">
+                    <ul class="ps-0 mb-0 d-flex align-items-center">
+                        <li class="me-2">
+                            <a href="javascript:void(0)"
+                                class="aside-create d-lg-none btn-pill mb-0 px-3 py-2 transition-3 rounded-pill fw-semibold text-white"><i
+                                    class="fa-light fa-plus me-2"></i></a>
+                            <a href="javascript:void(0)"
+                                class="aside-create d-none d-lg-block btn-pill mb-0 px-3 py-2 transition-3 rounded-pill fw-semibold text-white"><i
+                                    class="fa-light fa-plus me-2"></i> Create</a></li>
+                        <li><a href="javascript:void(0)"
+                                class="aside-full mb-0 d-flex align-items-center justify-content-center transition-3 rounded-circle text-white"><i
+                                    class="bi bi-arrows-angle-expand"></i></a></li>
+                        <li class="aside-close d-xl-none ms-2"><i class="fa-solid fa-xmark-large"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <a href="javascript:void(0)"
+                    class="btn-pill mb-0 d-inline-block transition-3 rounded-pill fw-medium text-white me-2">Artists</a>
+                <a href="javascript:void(0)"
+                    class="btn-pill mb-0 d-inline-block transition-3 rounded-pill fw-medium text-white">Playlists</a>
+            </div>
+            <!-- aside feature -->
+            <div class="aside-feture mt-3 d-flex align-items-center justify-content-between">
+                <a href="javascript:void(0)"
+                    class="aside-search transition-3 rounded-circle d-flex align-items-center justify-content-center"><i
+                        class="fa-light fa-magnifying-glass"></i></a>
+                <a href="javascript:void(0)"
+                    class="aside-recent transition-3  d-flex align-items-center justify-content-center">Recents <i
+                        class="fa-regular fa-list-ul ms-2"></i></a>
+            </div>
+            <div class="songlist rounded-2">
+                <ul class="ps-0 mt-4">
+                    <!-- <li class="d-flex align-items-center rounded-2 transition-3 px-3 py-2">
+                        <span><i class="fa-light fa-music text-white"></i></span>
+                        <div class="d-flex ms-3 w-100 align-items-center justify-content-between">
+                            <div class="info d-block">
+                                <h6 class="mb-0">Song Name</h6>
+                            <p class="mb-0">Artist Name</p>
+                            </div>
+                            <div class="song-play"><i class="fa-light fa-play"></i></div>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </aside>
+        <main class="rounded-2 mx-2 p-3">
+            <div class="body-title">
+                <div class="spotify-playlist">
+                    <h4 class="fw-semibold mb-2">Spotify Playlists</h4>
+                    <div class="card-container d-flex">
+                            <div data-folder="Hindi Songs" class="card transition-3 overflow-hidden rounded-2 p-2">
+                                <div class="img-wrapper position-relative rounded-1 overflow-hidden">
+                                    <img src="songs/Hindi Songs/cover.jpg" class="img-fluid" alt="img">
+                                    <div class="card-play opacity-0 transition-3 position-absolute rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="fa-solid fa-play text-black"></i></div>
+                                </div>
+                                <h6 class="fw-semibold mb-1 mt-2 text-white">Hindi Songs</h6>
+                                <p class="mb-0 fw-medium">Various Artists</p>
+                            </div>
+                            <div data-folder="Gujarati Songs" class="card transition-3 overflow-hidden rounded-2 p-2">
+                                <div class="img-wrapper position-relative rounded-1 overflow-hidden">
+                                    <img src="songs/Gujarati Songs/cover.jpg" class="img-fluid" alt="img">
+                                    <div class="card-play opacity-0 transition-3 position-absolute rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="fa-solid fa-play text-black"></i></div>
+                                </div>
+                                <h6 class="fw-semibold mb-1 mt-2 text-white">Gujarati Songs</h6>
+                                <p class="mb-0 fw-medium">Various Artists</p>
+                            </div>
+                            <div data-folder="English Songs" class="card transition-3 overflow-hidden rounded-2 p-2">
+                                <div class="img-wrapper position-relative rounded-1 overflow-hidden">
+                                    <img src="songs/English Songs/cover.jpg" class="img-fluid" alt="img">
+                                    <div class="card-play opacity-0 transition-3 position-absolute rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="fa-solid fa-play text-black"></i></div>
+                                </div>
+                                <h6 class="fw-semibold mb-1 mt-2 text-white">English Songs</h6>
+                                <p class="mb-0 fw-medium">Various Artists</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </main> 
+
+        
+    </div>
+
+    <!-- playbar -->
+        <div class="playbar position-fixed start-0 px-3 w-100 d-flex align-items-center justify-content-between">
+            <div class="song-detail w-100 overflow-hidden d-flex align-items-center">
+                 <span><i class="fa-light fa-music text-white"></i></span>
+                        <div class="d-flex ms-3 w-100 align-items-center justify-content-between">
+                            <div class="info d-block">
+                                <h6 class="mb-0">Song Name</h6>
+                            <p class="mb-0">Artist Name</p>
+                            </div>
+                        </div>
+            </div>
+            <div class="track-info">
+                <ul class="ps-0 mb-0 d-flex align-items-center justify-content-center">
+                    <li class="ms-0"><a href="javascript:void(0)" class=""><i class="fa-light fa-shuffle transition-3"></i></a></li>
+                    <li class="ms-4"><a href="javascript:void(0)" id="previous" class="back"><i class="fa-solid fa-backward-step transition-3"></i></a></li>
+                    <li class="ms-4"><a href="javascript:void(0)" id="play" class="play transition-3 rounded-circle d-inline-block d-flex align-items-center justify-content-center transition-3"></a></li>
+                    <li class="ms-4"><a href="javascript:void(0)" id="next" class="next"><i class="fa-solid fa-forward-step transition-3"></i></a></li>
+                    <li class="ms-4"><a href="javascript:void(0)" class=""><i class="fa-light fa-repeat transition-3"></i></a></li>
+                </ul>
+                <ul class="d-flex align-items-center justify-content-between ps-0 mt-3 mb-0 w-100">
+                    <li id="startTime"></li>
+                    <li class="w-100 mx-2">
+                        <div class="seekbar position-relative rounded-pill ">
+                            <div class="progress position-absolute"></div>
+                            <div class="circle position-absolute rounded-circle"></div>
+                        </div>
+                    </li>
+                    <li id="endTime"></li>
+                    
+                </ul>
+            </div>
+            <div class="volume rounded d-none d-lg-block">
+                <ul class="ps-0 mb-0 d-flex align-items-center">
+                    <li><a href="javascript:void(0)" class="me-3"><i class="fa-light fa-volume"></i></a></li>
+                    <li>
+                        <div class="range">
+                            <input type="range" name="volume">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    <script src="js/script.js" type="text/javascript"></script>
+    <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+</body>
+
+</html>
