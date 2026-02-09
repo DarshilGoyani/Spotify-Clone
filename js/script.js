@@ -98,24 +98,22 @@ const playMusic = (track, pause = false) => {
 async function displayAlbums(){
     let cardContainer = document.querySelector(".card-container")
     
-    // For static deployment (Vercel), use hardcoded album data
-    const albums = [
-        {
-            folder: "Hindi Songs",
-            title: "no copiright songs",
-            description: "songs for you"
-        },
-        {
-            folder: "Gujarati Songs", 
-            title: "Gujarati Hits",
-            description: "latest gujarati songs"
-        },
-        {
-            folder: "English Songs",
-            title: "English Collection", 
-            description: "popular english tracks"
+    // Use actual folder info from info.json files
+    const albums = [];
+    const folders = ["Hindi Songs", "Gujarati Songs", "English Songs"];
+    for (const folder of folders) {
+        try {
+            let response = await fetch(`/songs/${folder}/info.json`);
+            let info = await response.json();
+            albums.push({
+                folder: folder,
+                title: info.title,
+                description: info.description
+            });
+        } catch (error) {
+            console.log(`Failed to load info.json for ${folder}`);
         }
-    ];
+    }
     
     albums.forEach(async album => {
         cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="${album.folder}" class="card transition-3 overflow-hidden rounded-2 p-2">
