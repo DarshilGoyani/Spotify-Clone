@@ -19,18 +19,31 @@ function secondsToMinuteSeconds(seconds){
 
 async function getSongs(folder){
     currFolder = folder
-    let a = await fetch(`/${folder}/`)
-    let response = await a.text();
-    let div = document.createElement("div")
-    div.innerHTML = response;
-    let as = div.getElementsByTagName("a")
-    songs = []
-    for(let index = 0; index < as.length; index++){
-        const element = as[index];
-        if (element.href.endsWith(".mp3")) {
-            let file = element.href.substring(element.href.lastIndexOf("/") + 1);
-            songs.push(file);
-
+    
+    // For static deployment (Vercel), use JSON file instead of directory listing
+    try {
+        let response = await fetch('/songs/songs.json');
+        let songsData = await response.json();
+        
+        // Extract folder name from path
+        let folderName = folder.split('/').pop();
+        songs = songsData[folderName] || [];
+        
+    } catch (error) {
+        console.log('Falling back to directory listing for local development');
+        // Fallback to original method for local development
+        let a = await fetch(`/${folder}/`)
+        let response = await a.text();
+        let div = document.createElement("div")
+        div.innerHTML = response;
+        let as = div.getElementsByTagName("a")
+        songs = []
+        for(let index = 0; index < as.length; index++){
+            const element = as[index];
+            if (element.href.endsWith(".mp3")) {
+                let file = element.href.substring(element.href.lastIndexOf("/") + 1);
+                songs.push(file);
+            }
         }
     }
 
@@ -83,32 +96,38 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbums(){
-    let a = await fetch(`/songs/`)
-    let response = await a.text();
-    let div = document.createElement("div")
-    div.innerHTML = response;
-    let  anchors = div.getElementsByTagName("a")
     let cardContainer = document.querySelector(".card-container")
-    Array.from(anchors).forEach(async e=>{
-        if (e.href.includes("/songs")) {
-            let folder = e.href.split("/").slice(-2)[0]
-            // get the metadata of the folder
-            let a = await fetch(`/songs/${folder}/info.json`)
-            if (a.ok) {
-                let response = await a.json()
-                console.log(response)
-                cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="${folder}" class="card transition-3 overflow-hidden rounded-2 p-2">
-                                    <div class="img-wrapper position-relative rounded-1 overflow-hidden">
-                                        <img src="/songs/${folder}/cover.jpg" class="img-fluid" alt="img">
-                                        <div class="card-play opacity-0 transition-3 position-absolute rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="fa-solid fa-play text-black"></i></div>
-                                    </div>
-                                    <h6 class="fw-semibold mb-1 mt-2 text-white">${response.title}</h6>
-                                    <p class="mb-0 fw-medium">${response.description}</p>
-                                </div>`
-            }
+    
+    // For static deployment (Vercel), use hardcoded album data
+    const albums = [
+        {
+            folder: "Hindi Songs",
+            title: "no copiright songs",
+            description: "songs for you"
+        },
+        {
+            folder: "Gujarati Songs", 
+            title: "Gujarati Hits",
+            description: "latest gujarati songs"
+        },
+        {
+            folder: "English Songs",
+            title: "English Collection", 
+            description: "popular english tracks"
         }
-    })
+    ];
+    
+    albums.forEach(async album => {
+        cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="${album.folder}" class="card transition-3 overflow-hidden rounded-2 p-2">
+                            <div class="img-wrapper position-relative rounded-1 overflow-hidden">
+                                <img src="/songs/${album.folder}/cover.jpg" class="img-fluid" alt="img">
+                                <div class="card-play opacity-0 transition-3 position-absolute rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-play text-black"></i></div>
+                            </div>
+                            <h6 class="fw-semibold mb-1 mt-2 text-white">${album.title}</h6>
+                            <p class="mb-0 fw-medium">${album.description}</p>
+                        </div>`
+    });
 }
 
 async function main(){
