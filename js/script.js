@@ -20,9 +20,9 @@ function secondsToMinuteSeconds(seconds){
 async function getSongs(folder){
     currFolder = folder
     let a = await fetch(`http://127.0.0.1:5500/${folder}/`)
-    let responce = await a.text();
+    let response = await a.text();
     let div = document.createElement("div")
-    div.innerHTML = responce;
+    div.innerHTML = response;
     let as = div.getElementsByTagName("a")
     songs = []
     for(let index = 0; index < as.length; index++){
@@ -84,9 +84,9 @@ const playMusic = (track, pause = false) => {
 
 async function displayAlbums(){
     let a = await fetch(`http://127.0.0.1:5500/songs/`)
-    let responce = await a.text();
+    let response = await a.text();
     let div = document.createElement("div")
-    div.innerHTML = responce;
+    div.innerHTML = response;
     let  anchors = div.getElementsByTagName("a")
     let cardContainer = document.querySelector(".card-container")
     Array.from(anchors).forEach(async e=>{
@@ -94,17 +94,19 @@ async function displayAlbums(){
             let folder = e.href.split("/").slice(-2)[0]
             // get the metadata of the folder
             let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`)
-            let responce = await a.json()
-            console.log(responce)
-            cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="Hindi Songs" class="card transition-3 overflow-hidden rounded-2 p-2">
-                                <div class="img-wrapper position-relative rounded-1 overflow-hidden">
-                                    <img src="/songs/${folder}/cover.jpg" class="img-fluid" alt="img">
-                                    <div class="card-play opacity-0 transition-3 position-absolute rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="fa-solid fa-play text-black"></i></div>
-                                </div>
-                                <h6 class="fw-semibold mb-1 mt-2 text-white">${responce.title}</h6>
-                                <p class="mb-0 fw-medium">${responce.description}</p>
-                            </div>`
+            if (a.ok) {
+                let response = await a.json()
+                console.log(response)
+                cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="${folder}" class="card transition-3 overflow-hidden rounded-2 p-2">
+                                    <div class="img-wrapper position-relative rounded-1 overflow-hidden">
+                                        <img src="/songs/${folder}/cover.jpg" class="img-fluid" alt="img">
+                                        <div class="card-play opacity-0 transition-3 position-absolute rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="fa-solid fa-play text-black"></i></div>
+                                    </div>
+                                    <h6 class="fw-semibold mb-1 mt-2 text-white">${response.title}</h6>
+                                    <p class="mb-0 fw-medium">${response.description}</p>
+                                </div>`
+            }
         }
     })
 }
