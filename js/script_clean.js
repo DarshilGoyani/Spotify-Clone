@@ -90,9 +90,6 @@ const playMusic = (track, pause = false) => {
     }
     let cleanName = decodeURIComponent(track).replace(".mp3", "");
     document.querySelector(".song-detail h6").innerHTML = cleanName;
-
-
-
 }
 
 async function displayAlbums(){
@@ -166,13 +163,11 @@ async function main(){
         }
     });
 
-
     // listen for timeupdate event
     currentSong.addEventListener("timeupdate", () => {
         document.querySelector("#startTime").innerHTML = `${secondsToMinuteSeconds(currentSong.currentTime)}`
         document.querySelector("#endTime").innerHTML = `${secondsToMinuteSeconds(currentSong.duration)}`
         document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
-
     })
     
     // listen for timeupdate event
@@ -233,124 +228,5 @@ async function main(){
     document.querySelector(".range").addEventListener("click", (e) => {
         currentSong.volume = parseInt(e.target.value)/100
     })
-    
-    // load the playlist whenever card is clicked
-    // Removed duplicate card event listener from here
-
-    // add an event listener for hamburger
-    document.querySelector(".hamburger").addEventListener("click", () => {
-        document.querySelector("aside").style.left = "0"
-    })
-    
-    // add an event listener for hamburger to close it
-    document.querySelector(".aside-close").addEventListener("click", () => {
-        document.querySelector("aside").style.left = "-100%"
-    })
-
-    // add an event listener for previous
-    document.querySelector("#previous").addEventListener("click", () => {
-        let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0])
-        if ((index-1) >= 0) {
-            playMusic(songs[index-1])
-        }
-    })
-
-    // add an event listener for next
-    document.querySelector("#next").addEventListener("click", () => {
-        let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0])
-        if ((index+1) < songs.length) {
-            playMusic(songs[index+1])
-        }
-    })
-
-    // add an event listener for volume
-    document.querySelector(".range").addEventListener("click", (e) => {
-        currentSong.volume = parseInt(e.target.value)/100
-    })
-    document.querySelector(".circle").style.left = (currentSong.currentTime / currentSong.duration) * 100 + "%";
-
-    currentSong.addEventListener("timeupdate", () => {
-        document.querySelector("#startTime").innerHTML = `${secondsToMinuteSeconds(currentSong.currentTime)}`
-        document.querySelector("#endTime").innerHTML = `${secondsToMinuteSeconds(currentSong.duration)}`
-
-        let progress = (currentSong.currentTime / currentSong.duration) * 100;
-        document.querySelector(".circle").style.left = progress + "%";
-    });
-
-    currentSong.addEventListener("timeupdate", () => {
-        let progress = (currentSong.currentTime / currentSong.duration) * 100;
-    
-        document.querySelector(".progress").style.width = progress + "%"; // ✅ white bar fill
-        document.querySelector(".circle").style.left = progress + "%";   // ✅ circle move
-    
-        document.querySelector("#startTime").innerHTML = secondsToMinuteSeconds(currentSong.currentTime);
-        document.querySelector("#endTime").innerHTML = secondsToMinuteSeconds(currentSong.duration);
-    });
-
-    // add an event listener for hamburger
-    document.querySelector(".hamburger").addEventListener("click", () => {
-        document.querySelector("aside").style.left = "0"
-    })
-    
-    // add an event listener for hamburger to close it
-    document.querySelector(".aside-close").addEventListener("click", () => {
-        document.querySelector("aside").style.left = "-100%"
-    })
-
-    // add an event listener for previous
-    document.querySelector("#previous").addEventListener("click", () => {
-        let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0])
-        if ((index-1) >= 0) {
-            playMusic(songs[index-1])
-        }
-    })
-
-    // add an event listener for next
-    document.querySelector("#next").addEventListener("click", () => {
-        let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0])
-        if ((index+1) < songs.length) {
-            playMusic(songs[index+1])
-        }
-    })
-
-    // add an event listener for volume
-    document.querySelector(".range").addEventListener("click", (e) => {
-        currentSong.volume = parseInt(e.target.value)/100
-    })
-    
-    // load the playlist whenever card is clicked
-    // Removed duplicate card event listener from here
-
-    // add an event listener for hamburger
-    document.querySelector(".hamburger").addEventListener("click", () => {
-        document.querySelector("aside").style.left = "0"
-    })
-    
-// add an event listener for hamburger to close it
-document.querySelector(".aside-close").addEventListener("click", () => {
-    document.querySelector("aside").style.left = "-100%"
-})
-
-// add an event listener for previous
-document.querySelector("#previous").addEventListener("click", () => {
-    let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0])
-    if ((index-1) >= 0) {
-        playMusic(songs[index-1])
-    }
-})
-
-// add an event listener for next
-document.querySelector("#next").addEventListener("click", () => {
-    let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0])
-    if ((index+1) < songs.length) {
-        playMusic(songs[index+1])
-    }
-})
-
-// add an event listener for volume
-document.querySelector(".range").addEventListener("click", (e) => {
-    currentSong.volume = parseInt(e.target.value)/100
-})
-    
 }
 main();
