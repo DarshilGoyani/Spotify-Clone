@@ -2,6 +2,8 @@ let currentSong = new Audio();
 let play = document.getElementById("play");
 let songs
 let currFolder
+let isShuffle = false;
+let isLoop = false;
 
 function secondsToMinuteSeconds(seconds){
     if(isNaN(seconds) || seconds < 0){
@@ -342,15 +344,38 @@ document.querySelector("#previous").addEventListener("click", () => {
 // add an event listener for next
 document.querySelector("#next").addEventListener("click", () => {
     let index = songs.indexOf(currentSong.src.split("/").slice(-1) [0])
-    if ((index+1) < songs.length) {
-        playMusic(songs[index+1])
-    }
-})
+    let nextIndex;
+        
+        if (isShuffle) {
+            // Random song for shuffle
+            do {
+                nextIndex = Math.floor(Math.random() * songs.length);
+            } while (nextIndex === index && songs.length > 1);
+        } else {
+            // Next song in sequence
+            nextIndex = (index + 1) % songs.length;
+        }
+        
+        playMusic(songs[nextIndex])
+    })
 
 // add an event listener for volume
 document.querySelector(".range").addEventListener("click", (e) => {
     currentSong.volume = parseInt(e.target.value)/100
 })
+    
+    // add shuffle functionality
+    document.getElementById("shuffel").addEventListener("click", () => {
+        isShuffle = !isShuffle;
+        document.getElementById("shuffel").style.color = isShuffle ? "#1DB954" : "#b3b3b3";
+    })
+
+    // add loop functionality
+    document.getElementById("loop").addEventListener("click", () => {
+        isLoop = !isLoop;
+        currentSong.loop = isLoop;
+        document.getElementById("loop").style.color = isLoop ? "#1DB954" : "#b3b3b3";
+    })
     
 }
 main();
